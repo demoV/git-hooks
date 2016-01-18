@@ -1,0 +1,10 @@
+statement=90
+branch=89
+function=90
+line=95
+istanbul check-coverage --statements $statement && istanbul check-coverage --branches $branch && istanbul check-coverage --functions $function && istanbul check-coverage --lines $line
+
+if [ $? != 0 ]
+then 
+	exit 1
+fi
