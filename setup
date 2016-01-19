@@ -3,3 +3,16 @@ ln -s ../../git-hooks/pre-commit ./pre-commit
 cd ../..
 chmod +x git-hooks/pre-commit 
 echo 'git-hooks/**'>>.gitignore
+type istanbul >>___dev.txt 2>&1
+if [ $? != 0 ]
+then 
+	echo "You don't have istanbul globally installed"
+	read -p "To install it now press y : " ans
+	ans=${ans:-n}
+	if [ $ans == 'y' ] || [ $ans == 'Y' ]
+	then
+		sudo npm install istanbul -g
+	fi
+fi
+rm ___dev.txt
+echo "-----------SETUP IS COMPLETED-----------"
